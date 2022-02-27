@@ -10,6 +10,11 @@
                     </h3>
                 </div>
                 <div class="card-body">
+                    @if ($errors->has('nombre'))
+                    <div class='alert alert-danger'>
+                        {{ $errors->first('nombre') }}
+                    </div>
+                    @endif
                     <form method='POST' action='{{ route('clients.add') }}' class='form-group'>
                         @csrf
                         <input name='nombre' class='form-control' type='text' placeholder='Nombre'/>

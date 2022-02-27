@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\Cliente;
+use \App\Http\Requests\ClienteRequest;
 
 class ClienteController extends Controller
 {
@@ -34,16 +35,18 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
-        $newCliente = new Cliente;
-        $newCliente->nombre = $request->input('nombre');
-        $newCliente->codigo = $request->input('codigo');
-        $newCliente->rif = $request->input('rif');
-        $newCliente->direccion = $request->input('direccion');
-        $newCliente->telefono = $request->input('telefono');
-        $newCliente->email = $request->input('email');
-        $newCliente->save();
+        $cliente = new Cliente;
+        $cliente->create($request->all());
+        //$newCliente->nombre = $request->input('nombre');
+        //$newCliente->codigo = $request->input('codigo');
+        //$newCliente->rif = $request->input('rif');
+        //$newCliente->direccion = $request->input('direccion');
+        //$newCliente->telefono = $request->input('telefono');
+        //$newCliente->email = $request->input('email');
+        //$newCliente->save();
+        //return response()->json('Cliente registrado!');
         return redirect()->route('clients.index')->with('info', 'Cliente Agregado correctamente');
     }
 
@@ -70,13 +73,14 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         $cliente = Cliente::findOrFail($id);
-        $cliente->nombre = $request->input('nombre');
-        $cliente->rif = $request->input('rif');
-        $cliente->telefono = $request->input('telefono');
-        $cliente->email = $request->input('email');
-        $cliente->direccion = $request->input('direccion');
-        $cliente->codigo = $request->input('codigo');
-        $cliente->save();
+        $cliente->update($request->all());
+        //$cliente->nombre = $request->input('nombre');
+        //$cliente->rif = $request->input('rif');
+        //$cliente->telefono = $request->input('telefono');
+        //$cliente->email = $request->input('email');
+        //$cliente->direccion = $request->input('direccion');
+        //$cliente->codigo = $request->input('codigo');
+        //$cliente->save();
         return redirect()->route('clients.index')->with('info', 'Cliente editado correctamente');
     }
 
