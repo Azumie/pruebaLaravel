@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use App\Models\Cliente;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,29 +22,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('clientes', function(){
-// 	return view('clientes.agregar');
-// });
-Route::get('/clients', function () {
-	return view('clients.index');
-})->name('clients.index');
+Route::get('/clientes', [ClienteController::class, 'index'])->name('clients.index');
+Route::get('/clients/add', [ClienteController::class, 'create'])->name('clients.add');
+Route::get('/clients/{id}', [ClienteController::class, 'edit'])->name('clients.edit');
+Route::post('/clients/add', [ClienteController::class, 'store']);
+Route::delete('/clients/{id}', [ClienteController::class, 'destroy'])->name('clients.destroy');
+Route::put('/clients/{id}', [ClienteController::class, 'update'])->name('clients.update');
 
-Route::get('/clients/add', function () {
-    return view('clients.add');
-})->name('clients.add');
 
-Route::post('/clients/add', function (Request $request) {
-    $newCliente = new Cliente;
-    $newCliente->nombre = $request->input('nombre');
-    $newCliente->codigo = $request->input('codigo');
-    $newCliente->rif = $request->input('rif');
-    $newCliente->direccion = $request->input('direccion');
-    $newCliente->telefono = $request->input('telefono');
-    $newCliente->email = $request->input('email');
-    $newCliente->save();
-    echo $request->input('nombre');
-    //return redirect()->route('clients.index');
-});
 
 Auth::routes();
 
