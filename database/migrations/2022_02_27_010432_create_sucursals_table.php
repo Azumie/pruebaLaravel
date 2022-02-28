@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateSucursalsTable extends Migration
 {
@@ -13,7 +14,7 @@ class CreateSucursalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sucursales', function (Blueprint $table) {
+        Schema::create('sucursals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('codigo', 10);
             $table->string('descripcion', 100);
@@ -21,10 +22,12 @@ class CreateSucursalsTable extends Migration
             $table->string('direccion', 191);
             $table->string('correo', 100);
             $table->string('telefono', 100);
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
             //$table->unsignedInteger('idusuario');
             //$table->foreign('idusuario')->references('id')->on('usuarios');
         });
-        DB::table('sucursales')
+        DB::table('sucursals')
             ->insert([
                 'codigo' => 'HLASDJR24',
                 'descripcion' => 'Hola',

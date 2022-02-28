@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3> Agregar Cliente
+                    <h3> Editar Usuario
                     </h3>
                 </div>
                 <div class="card-body">
@@ -15,21 +15,19 @@
                         {{ $errors->first('nombre') }}
                     </div>
                     @endif
-                    <form method='POST' action='{{ route('clients.add') }}' class='form-group'>
+                    <form method='POST' action='{{ route('usuarios.update', $usuario->id) }}' class='form-group'>
+                        @method('put')
                         @csrf
-                        <input name='nombre' class='form-control' type='text' placeholder='Nombre'/>
-                        <input name='codigo' class='form-control' type='text' placeholder='Codigo'/>
-                        <input name='rif' class='form-control' type='text' placeholder='RIF'/>
-                        <input name='direccion' class='form-control' type='text' placeholder='Direccion'/>
-                        <input name='telefono' class='form-control' type='text' placeholder='Telefono'/>
-                        <input name='email' class='form-control' type='text' placeholder='Email'/>
-                        <select name='idsucursal' class='form-control'>
+                        <input name='name' value='{{ $usuario->name }}' class='form-control' type='text' placeholder='Nombre'/>
+                        <input name='email' value='{{ $usuario->email }}' class='form-control' type='text' placeholder='Email'/>
+                        <input name='password' class='form-control' type='password' placeholder='Nueva Clave'/>
+                        <select name='idsucursal' value='{{ $usuario->idsucursal }}' class='form-control'>
                             @foreach ($sucursales as $sucursal)
                                 <option value='{{ $sucursal->id }}'>{{ $sucursal->codigo }}</option>
                             @endforeach
                         </select>
                         <button class='btn btn-info'>Guardar</button>
-                        <a class='btn btn-danger' href='{{ route('clients.index') }}'>Cancelar</a>
+                        <a class='btn btn-danger' href='{{ route('usuarios.index') }}'>Cancelar</a>
                     </form>
                 </div>
             </div>

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Sucursal extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+    	'codigo',
+    	'descripcion',
+    	'rif',
+    	'direccion',
+    	'correo',
+    	'telefono',
+    ];
 }

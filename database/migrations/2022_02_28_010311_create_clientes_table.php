@@ -21,7 +21,10 @@ class CreateClientesTable extends Migration
             $table->string('direccion', 200);
             $table->string('telefono', 10);
             $table->string('email', 100);
+            $table->boolean('activo')->default(true);
             $table->timestamps();
+            $table->unsignedInteger('idsucursal')->default(0);
+            $table->foreign('idsucursal')->references('id')->on('sucursals');
         });
     }
 

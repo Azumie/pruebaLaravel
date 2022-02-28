@@ -15,6 +15,7 @@ class Cliente extends Model
     	'rif',
     	'direccion',
     	'telefono',
-    	'email'
+        'email',
+        'idsucursal'
     ];
 }

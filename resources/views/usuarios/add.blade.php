@@ -15,21 +15,18 @@
                         {{ $errors->first('nombre') }}
                     </div>
                     @endif
-                    <form method='POST' action='{{ route('clients.add') }}' class='form-group'>
+                    <form method='POST' action='{{ route('usuarios.add') }}' class='form-group'>
                         @csrf
-                        <input name='nombre' class='form-control' type='text' placeholder='Nombre'/>
-                        <input name='codigo' class='form-control' type='text' placeholder='Codigo'/>
-                        <input name='rif' class='form-control' type='text' placeholder='RIF'/>
-                        <input name='direccion' class='form-control' type='text' placeholder='Direccion'/>
-                        <input name='telefono' class='form-control' type='text' placeholder='Telefono'/>
+                        <input name='name' class='form-control' type='text' placeholder='Nombre'/>
                         <input name='email' class='form-control' type='text' placeholder='Email'/>
+                        <input name='password' class='form-control' type='password' placeholder='Clave'/>
                         <select name='idsucursal' class='form-control'>
                             @foreach ($sucursales as $sucursal)
                                 <option value='{{ $sucursal->id }}'>{{ $sucursal->codigo }}</option>
                             @endforeach
                         </select>
                         <button class='btn btn-info'>Guardar</button>
-                        <a class='btn btn-danger' href='{{ route('clients.index') }}'>Cancelar</a>
+                        <a class='btn btn-danger' href='{{ route('usuarios.index') }}'>Cancelar</a>
                     </form>
                 </div>
             </div>
