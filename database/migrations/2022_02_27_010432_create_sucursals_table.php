@@ -29,10 +29,10 @@ class CreateSucursalsTable extends Migration
         });
         DB::table('sucursals')
             ->insert([
-                'codigo' => 'HLASDJR24',
-                'descripcion' => 'Hola',
+                'codigo' => 'S001',
+                'descripcion' => 'Sucursal principal',
                 'rif' => 'j-27554995',
-                'direccion' => 'Carrera 19',
+                'direccion' => 'Av Venezuela',
                 'correo' => 'prueba@gmail.com',
                 'telefono' => '04125280750',
             ]);
