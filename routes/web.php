@@ -20,7 +20,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [ClienteController::class, 'index'])->name('home');
 
 Route::get('/clientes', [ClienteController::class, 'index'])->name('clients.index');
 Route::get('/clients/add', [ClienteController::class, 'create'])->name('clients.add');

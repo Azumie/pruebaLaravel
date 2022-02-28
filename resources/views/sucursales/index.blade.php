@@ -1,7 +1,7 @@
 @extends('layouts.custom')
 
 @section('content')
-<div class="container">
+<div class="container fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -14,7 +14,7 @@
                     @if (session('info'))
                         <div class='alert alert-success'>{{ session('info') }}</div>
                     @endif
-                    <table class='table'>
+                    <table class='table table-responsive'>
                         <thead>
                             <tr>
                                 <th>Codigo</th>
