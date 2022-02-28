@@ -24,23 +24,36 @@ class SucursalRequest extends FormRequest
     public function rules()
     {
         return [
-            'codigo' => ['required'],
-            'descripcion' => ['required'],
-            'rif' => ['required'],
-            'direccion' => ['required'],
-            'correo' => ['required'],
-            'telefono' => ['required'],
+            'codigo' => ['required', 'min:3', 'max:10'],
+            'descripcion' => ['required', 'min:3', 'max:100'],
+            'rif' => ['required', 'min:3', 'max:11'],
+            'direccion' => ['required', 'min:3', 'max:191'],
+            'correo' => ['required', 'min:3', 'max:100'],
+            'telefono' => ['required', 'min:3', 'max:10'],
         ];
     }
 
     public function messages() {
         return [
             'codigo.required' => 'El codigo es requerido',
-            'descripcion.required' => 'la direccion es requerida',
+            'codigo.min' => 'El codigo debe contener minimo 3 carácteres',
+            'codigo.max' => 'El codigo debe contener máximo 10 carácteres',
+            'descripcion.required' => 'La descripcion es requerida',
+            'descripcion.min' => 'La descripcion debe contener minimo 3 carácteres',
+            'descripcion.max' => 'La descripcion debe contener máximo 100 carácteres',
             'rif.required' => 'El rif es requerido',
-            'direccion.required' => 'El direccion es requerido',
-            'correo.required' => 'El email es requerido',
+            'rif.min' => 'El rif debe contener minimo 3 carácteres',
+            'rif.max' => 'El rif debe contener máximo 11 carácteres',
+            'direccion.required' => 'El direccion es requerida',
+            'direccion.min' => 'La direccion debe contener minimo 3 carácteres',
+            'direccion.max' => 'La direccion debe contener máximo 191 carácteres',
+            'correo.required' => 'El correo es requerido',
+            'correo.min' => 'El correo debe contener minimo 3 carácteres',
+            'correo.max' => 'El correo debe contener máximo 100 carácteres',
             'telefono.required' => 'El telefono es requerido',
+            'telefono.min' => 'El telefono debe contener minimo 3 carácteres',
+            'telefono.max' => 'El telefono debe contener máximo 10 carácteres',
+
         ];
     }
 }

@@ -10,9 +10,13 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    @if ($errors->has('codigo'))
+                    @if (count($errors) > 0)
                     <div class='alert alert-danger'>
-                        {{ $errors->first('codigo') }}
+                        <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
                     </div>
                     @endif
                     <form method='POST' action='{{ route('sucursales.update', $sucursal->id) }}' class='form-group'>

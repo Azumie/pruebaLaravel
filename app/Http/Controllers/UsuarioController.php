@@ -30,6 +30,12 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:191|min:3',
+            'email' => 'required|max:191|min:3',
+            'idsucursal' => 'required',
+            'password' => 'required',
+        ]);
         $usuario = new User;
         $datos = [
             'name' => $request->name,
@@ -55,6 +61,11 @@ class UsuarioController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:191|min:3',
+            'email' => 'required|max:191|min:3',
+            'idsucursal' => 'required',
+        ]);
         $usuario = user::findOrFail($id);
         if ($request->password != null)
             $usuario->password = Hash::make($request->password);

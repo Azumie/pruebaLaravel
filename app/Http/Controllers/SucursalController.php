@@ -41,7 +41,7 @@ class SucursalController extends Controller
        return view('sucursales.edit', ['sucursal' => $sucursal]);
     }
 
-    public function update(Request $request, $id)
+    public function update(SucursalRequest $request, $id)
     {
         $sucursal= Sucursal::findOrFail($id);
         $sucursal->update($request->all());

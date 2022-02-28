@@ -1,7 +1,7 @@
 @extends('layouts.custom')
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -10,9 +10,13 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    @if ($errors->has('nombre'))
+                    @if (count($errors) > 0)
                     <div class='alert alert-danger'>
-                        {{ $errors->first('nombre') }}
+                        <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
                     </div>
                     @endif
                     <form method='POST' action='{{ route('usuarios.add') }}' class='form-group'>
